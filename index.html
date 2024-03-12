@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de móviles</title>
+    <style>
+        #caja-provincia { visibility: hidden;}
+
+    </style>
+</head>
+<body>
+    <h1>Venta de móviles</h1>
+    <form action="procesa-venta.php" onsubmit="validaFormulario()">
+        <label for="color-movil">Color del móvil</label>
+        <input type="color" disabled name="color-movil" id="color-movil">
+        <input type="submit" value="Comprar">
+        <label for="producto">Producto</label>
+        <select onchange="habilitaColor()"  name="producto" id="producto">
+                <option value="elija">Elija Producto...</option>
+                <option value="movil">Móvil</option>
+                <option value="tablet">Tablet</option>
+        </select>
+º
+
+    </form>
+    <h1>Datos de Envío</h1>
+    <label for="pais">Pais</label>
+    <select name="pais" id="pais" onchange="muestraProvincias()">
+            <option value="elija">Elija País</option>
+            <option value="es">España</option>
+            <option value="no-es">Fuera de España</option>
+    </select>
+    <div id="caja-provincia">
+        <label for="provincia">Provincia</label>
+        <select name="provincia" id="provincia">
+                <option value="elija">Elija Provincia</option>
+                <option value="cu">Cuenca</option>
+                <option value="ab">Albacete</option>
+                <option value="cr">Ciudad Real</option>
+        </select>
+    </div>
+    <div id="caja-paises">
+        <label for="pais">Pais</label>
+        <select name="pais" id="pais">
+                <option value="elija">Elija Pais fuera de España</option>
+                <option value="fr">Francia</option>
+                <option value="al">Alemania</option>
+        </select>
+    </div>
+</body>
+<script>
+    function validaFormulario(){
+        let colorMovil = document.getElementById("color-movil");
+        if ( colorMovil.value != "#ff0000" &&
+        colorMovil.value != "#ffff00" ){
+            alert("Solo quedan rojos y amarillos");
+            colorMovil.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>
